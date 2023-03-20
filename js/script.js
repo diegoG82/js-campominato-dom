@@ -5,6 +5,10 @@ const numberOfsquares = 100;
 const bombs = generatebombs(16, 100);
 console.log(bombs);
 
+// VARIABILE PER IL PUNTEGGIO
+let score = [];
+console.log(score);
+
 // Al click del tasto play generare una griglia di gioco quadrata in cui ogni cella contiene un numero compreso tra 1 e 100.
 
 const btnPlay = document.getElementById("startgame");
@@ -20,11 +24,9 @@ btnPlay.addEventListener("click", function () {
     const newItem = generateGridItem(i);
     grid.append(newItem);
   }
-
-  //   Definisco la costante bombe
-
-  // In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
 });
+
+// MOSTRO IL PUNTEGGIO
 
 // FUNZIONI
 ////////////////////////////////////////////////////////////////
@@ -63,16 +65,36 @@ function getRndInteger(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina, altrimenti la cella cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
 // FUNZIONE PER IL COLORE DELLE CELLE
 
 function addColor() {
   const clickedNumber = parseInt(this.querySelector("span").textContent);
   console.log(clickedNumber);
-
+  // SCONFITTA
   if (bombs.includes(clickedNumber)) {
     this.classList.add("red");
-    alert("Bomba!");
+    alert("Bomba! Hai perso!");
+    alert(`il tuo punteggio è: ${score.length}`);
+    // PROSEGUIMENTO GIOCO
   } else {
     this.classList.add("azure");
+    if (gamescore(clickedNumber) === true) {
+      console.log("hai vinto!");
+    }
   }
+}
+
+// FUNZIONE CALCOLO PUNTEGGIO
+
+function gamescore(number) {
+  score.push(number);
+  console.log(score);
+  console.log(score.length);
+
+  if (score.length === numberOfsquares - 16) {
+    console.log("Hai Vinto!");
+  } else score.length + 1;
+  return gamescore;
 }
