@@ -83,6 +83,7 @@ function addColor() {
     // PROSEGUIMENTO GIOCO
   } else {
     this.classList.add("azure");
+    this.classList.add("noneclick");
     if (gamescore(clickedNumber) === true) {
       console.log("hai vinto!");
     }

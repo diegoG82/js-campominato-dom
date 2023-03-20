@@ -71,3 +71,7 @@
     background-color: red;
   }
   
+  .noneclick{
+    pointer-events: none;
+
+  }
