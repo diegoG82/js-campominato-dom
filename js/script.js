@@ -19,14 +19,15 @@ btnPlay.addEventListener("click", function () {
   // Reset delle celle:
   grid.innerHTML = "";
 
+  //   reset dello score
+  score = [];
+
   // Ciclo per creare le 100 caselle:
   for (let i = 1; i <= numberOfsquares; i++) {
     const newItem = generateGridItem(i);
     grid.append(newItem);
   }
 });
-
-// MOSTRO IL PUNTEGGIO
 
 // FUNZIONI
 ////////////////////////////////////////////////////////////////
@@ -75,8 +76,10 @@ function addColor() {
   // SCONFITTA
   if (bombs.includes(clickedNumber)) {
     this.classList.add("red");
+
     alert("Bomba! Hai perso!");
     alert(`il tuo punteggio è: ${score.length}`);
+
     // PROSEGUIMENTO GIOCO
   } else {
     this.classList.add("azure");
@@ -95,6 +98,9 @@ function gamescore(number) {
 
   if (score.length === numberOfsquares - 16) {
     console.log("Hai Vinto!");
-  } else score.length + 1;
+  } else {
+    score.length + 1;
+  }
+
   return gamescore;
 }
