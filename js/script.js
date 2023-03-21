@@ -97,8 +97,8 @@ function gamescore(number) {
   console.log(score);
   console.log(score.length);
 
-  if (score.length === numberOfsquares - 16) {
-    console.log("Hai Vinto!");
+  if (score.length === (numberOfsquares - 16)) {
+    alert("Hai Vinto!");
   } else {
     score.length + 1;
   }
